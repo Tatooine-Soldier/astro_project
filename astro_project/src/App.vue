@@ -1,13 +1,9 @@
 <script setup>
-
+import Nav from "./components/Nav.vue"
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      Hi
-    </div>
-  </header>
+  <Nav></Nav>
   <section class="router-content">
     <router-view></router-view>
   </section>
@@ -17,6 +13,17 @@
 <style scoped>
 header {
   line-height: 1.5;
+}
+
+body {
+  margin: 0px;
+}
+
+.router-content {
+  background-color: var(--secondary-dark);
+  height: 100vh;
+  color: white;
+  padding: 2%;;
 }
 
 

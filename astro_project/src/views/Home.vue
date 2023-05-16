@@ -1,14 +1,14 @@
 <template>
     <section class="home-container">
         <section>
-            Home
+            <section>COSMIC IRELAND</section>
         </section>
     </section>
 </template>
 
 <style>
 .home-container {
-    color: var(--primary-dark);
+    color: white;
 }
 </style>
 
