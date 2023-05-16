@@ -1,6 +1,15 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
 import App from './App.vue'
+import router from './router/index'
+import './assets/global.css';
+//import express  from 'express';
+// import http from 'http';
 
-createApp(App).mount('#app')
+// const app = express();
+//const server = http.createServer(app);
+
+const app = createApp(App)
+app.use(router)
+app.mount('#app')
+
+server.listen(3000)
