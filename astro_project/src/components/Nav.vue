@@ -2,13 +2,13 @@
     <section class="nav-outer">
         <section class="nav-inner">
             <section class="nav-img">
-                <img src="../assets/cosmo-logo-big40px.png"/>
+                <img src="../assets/trisk-small.png"/>
             </section>
             <section class="nav-ul">
                 <ul>
                     <li><router-link to="/">Home</router-link></li>
-                    <li><router-link to="/">Pictures</router-link></li>
-                    <li><router-link to="/">Pictures</router-link></li>
+                    <li><router-link to="/blog">Blog</router-link></li>
+                    <li><router-link to="/iss-tracker">ISS Tracker</router-link></li>
                 </ul>
             </section>
         </section>
@@ -20,13 +20,18 @@
 .nav-outer {
     background-color: var(--primary-dark);
     max-height: 10%;
-    border-bottom: .75px silver solid;
+    border-bottom: .5px var(--primary-light) solid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
 }
 
 .nav-inner {
     display: grid;
     grid-template-columns: 10% 90%;
-    max-height: 10%;
+    height: 100%;
     width: 60%;
 }
 
@@ -41,7 +46,7 @@
     background-color: var(--primary-dark);
     text-align: center;
     border-right: solid var(--secondary-dark) 1px;;
-    padding-right: 7%;;
+    padding-right: 10%;;
 }
 
 .nav-ul li:first-of-type {
@@ -58,7 +63,7 @@
     color: white;
     display: inline-block;
     width: 100%;;
-    padding: 5%;
+    padding: 6%;
     font-size: 1.1em;
 }
 
@@ -66,10 +71,42 @@
 
 .nav-img img {
     max-height: 100%;;
+    margin-left: 40%;
+    margin-top: 5%;;
 }
 
 .nav-img {
     max-height: 400%;
 }
+
+@media screen and (max-width: 600px) {
+    .nav-inner {
+        width: 80%;
+    }
+  }
+
+@media screen and (max-width: 450px) {
+    .nav-inner {
+        width: 90%;
+    }
+
+    .nav-ul li a {
+        padding: 12%;
+    }
+  }
+
+@media screen and (max-width: 350px) {
+    .nav-inner {
+        width: 100%;
+    }
+
+    .nav-ul li a {
+        padding: 13%;
+       
+    }
+
+    
+  }
+
 
 </style>
