@@ -8,9 +8,10 @@
 
 <style>
     .footer-container {
-        z-index: 1;
+        z-index: 2;
         padding: 1em;;
         background-color: var(--primary-dark);
         border-top: solid 1px var(--primary-light);
+        color: white;
     }
 </style>

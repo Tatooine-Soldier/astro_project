@@ -7,16 +7,46 @@
             <section class="nav-ul">
                 <ul>
                     <li><router-link to="/">Home</router-link></li>
-                    <li><router-link to="/blog">Blog</router-link></li>
+                    <li @click="displayDropDown()"><router-link to="/blog">Blog</router-link></li>
                     <li><router-link to="/iss-tracker">ISS Tracker</router-link></li>
                 </ul>
             </section>
         </section>
     </section>
+    <!-- <div id="dropdown-container">
+        <div>
+            <ol>
+                <div><router-link to="/blog">Blog Posts</router-link></div>
+                <div><router-link to="/blog">Past Blog Posts</router-link></div>
+            </ol>
+        </div>
+    </div> -->
 </template>
 
 
 <style>
+
+#dropdown-container {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 27.75%;
+    top: 5%;
+    background-color: var(--primary-dark);
+    width: 10%;
+}
+
+#dropdown-container ol {
+    padding: 8%;
+    padding-bottom: 2%;
+}
+
+#dropdown-container ol a {
+    color: white;
+    text-decoration: none;
+}
+
+
 .nav-outer {
     background-color: var(--primary-dark);
     max-height: 10%;
@@ -110,3 +140,16 @@
 
 
 </style>
+
+<script>
+    export default {
+  
+        methods: {
+            displayDropDown() {
+                console.log("clickedd");
+                var d = document.getElementById("dropdown-container")
+                d.style.display = "block"
+            }
+        }
+    }
+</script>

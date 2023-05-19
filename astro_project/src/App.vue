@@ -8,7 +8,7 @@ import Footer from "./components/Footer.vue";
   <section class="router-content">
     <router-view></router-view>
   </section>
-  <Footer></Footer>
+  <Footer id="footer"></Footer>
 </template>
 
 <style scoped>
@@ -24,7 +24,11 @@ body {
   background-color: var(--secondary-dark);
   height: auto;
   color: white;
-  padding-top: 3.3%;
+  padding-top: 3.7%;
+}
+
+#footer {
+  position: relative;
 }
 
 @media screen and (max-width: 900px) {

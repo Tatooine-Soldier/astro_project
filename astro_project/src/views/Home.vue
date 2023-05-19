@@ -8,6 +8,8 @@
                     <section class="home-divs-container">
                         <div class="home-divs">News</div>
                         <div class="home-divs">Images</div>
+                        <div class="home-divs">News</div>
+                        <div class="home-divs">Images</div>
                     </section>
                 </div>
                 <img src="../assets/grey-plan-crop.jpg" id="planets"/>
@@ -29,8 +31,11 @@
 .home-divs-container {
     display: grid;
     grid-template-rows: auto auto;
-    row-gap: 3%;
-    margin-top: 18%;;
+    grid-template-columns: auto auto;
+    row-gap: 5%;
+    column-gap: 2%;
+    margin-top: 24%;;
+    margin-bottom: 5%;
 }
 
 .home-divs {
