@@ -4,17 +4,6 @@ import Footer from "./components/Footer.vue";
 
 const deviceWidth = window.innerWidth < 600;
 
-if (deviceWidth) {
-  var d = document.getElementById("unaccept-display")
-  d.style.display = "block"
-
-  var a = document.getElementById("accept-display")
-  a.style.display = "none"
-
-}
-
-document
-
 </script>
 
 <template>
