@@ -3,7 +3,7 @@
         <section class="blog-post">
             <section class="blog-title-container">
                 <section class="blog-title">
-                    <div>{{ title }}</div>
+                    <div id="title-in">{{ title }}</div>
                 </section>
             </section>
             <section class="blog-content-container">
@@ -18,9 +18,26 @@
 
 <style>
     .blog-post-container {
-        background-color: var(--secondary-dark);
-        border: solid grey 1px;;
+        background-color: #4b4b4b ;
+        border: solid var(--primary-light) 1px;;
+        border-radius: 10px;;
         width: 80%;
+        margin: 2%;
+        box-shadow: 10px 10px 8px #252424;
+    }
+
+    .blog-post-container:hover {
+        background-color: var(--primary-dark);
+        cursor: pointer;
+    }
+
+    .blog-post {
+        padding: 1%;
+        font-size: 1.1em;
+    }
+
+    #title-in {
+        text-decoration: underline;
     }
 </style>
 

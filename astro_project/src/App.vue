@@ -1,14 +1,33 @@
 <script setup>
 import Nav from "./components/Nav.vue"
 import Footer from "./components/Footer.vue";
+
+const deviceWidth = window.innerWidth < 600;
+
+if (deviceWidth) {
+  var d = document.getElementById("unaccept-display")
+  d.style.display = "block"
+
+  var a = document.getElementById("accept-display")
+  a.style.display = "none"
+
+}
+
+document
+
 </script>
 
 <template>
-  <Nav></Nav>
-  <section class="router-content">
-    <router-view></router-view>
+  <section class="accept-display" id="accept-display">
+    <Nav></Nav>
+    <section class="router-content">
+      <router-view></router-view>
+    </section>
+    <Footer id="footer"></Footer>
   </section>
-  <Footer id="footer"></Footer>
+  <section class="unaccept-display" id="unaccept-display">
+    Sorry, this site is not available on your device &hearts;
+  </section>
 </template>
 
 <style scoped>
@@ -18,6 +37,12 @@ header {
 
 body {
   margin: 0px;
+}
+
+.unaccept-display {
+  color: var(--primary-light);
+  background-color: var(--primary-dark);
+  display: none;
 }
 
 .router-content {

@@ -18,11 +18,13 @@
                             <th class="headings">Speed (km/h)</th>
                             <th class="headings">Altitude (km)</th>
                             <th class="headings">Time (UTC)</th>
+                            <th class="headings">Visibility</th>
                         </tr>
                         <tr>
                             <td>{{ speed }}</td>
                             <td>{{ altitude }}</td>
                             <td>{{ time }}</td>
+                            <td>{{ visibility }}</td>
                         </tr>
                     </table>
                     <div class="video-container">
@@ -42,7 +44,7 @@
 }
 
 .iss-header-container {
-    font-size: 2.5em;
+    font-size: 2.4em;
     text-align: center;
 }
 
@@ -189,6 +191,7 @@ export default {
         let speed = ref(null)
         let time = ref(null)
         let altitude = ref(null)
+        let visibility = ref(null)
         
         const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY})
         let mapDivHere = ref(null);
@@ -219,6 +222,7 @@ export default {
             altitude.value = parseInt(final.altitude)
             speed.value = parseFloat(final.velocity).toFixed(2)
             time.value = parseTimeDate(final.timestamp)
+            visibility.value = final.visibility
             
 
             currPos.value = {lat: lat, lng: lng}
@@ -239,6 +243,7 @@ export default {
             altitude.value = parseInt(final.altitude)
             speed.value = parseFloat(final.velocity).toFixed(2)
             time.value = parseTimeDate(final.timestamp)
+            visibility.value = final.visibility
 
             currPos.value = {lat: lat, lng: lng}
             map.value = new google.maps.Map(mapDivHere.value, {
@@ -285,7 +290,7 @@ export default {
         }
 
 
-        return {currPos, mapDivHere, speed, time, altitude}
+        return {currPos, mapDivHere, speed, time, altitude, visibility}
     },
     methods: {
 
