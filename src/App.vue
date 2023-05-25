@@ -68,7 +68,7 @@ body {
 
 @media screen and (max-width: 450px) {
   .router-content {
-    padding-top: 8%;
+    padding-top: 12%;
     height: 100vh;
   }
 
@@ -76,13 +76,13 @@ body {
 
 @media screen and (max-width: 350px) {
   .router-content {
-    padding-top: 12%;
+    padding-top: 15%;
   }
 }
 
 @media screen and (max-width: 300px) {
   .router-content {
-    padding-top: 15%;
+    padding-top: 18%;
   }
 }
 
