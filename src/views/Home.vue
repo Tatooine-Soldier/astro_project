@@ -97,6 +97,12 @@ p {
     #home-title {
         top: 40%;
     }
+    
+    #planets {
+        width: 1300px;
+        transform: translate(-430px, 0px);
+    }
+
 
  
   }
