@@ -6,7 +6,10 @@
                     <h2><b>COSMIC IRELAND</b></h2>
                     <p><i id="home-quote">"The only true wisdom is in knowing you know nothing"<br>~ Socrates</i></p>
                     <section class="home-divs-container">
-                        <div class="home-divs">News</div>
+                        <div class="home-divs">
+                            Today News
+                            <div>{{ titleList[0] }}</div>
+                        </div>
                         <div class="home-divs">Images</div>
                         <div class="home-divs">News</div>
                         <div class="home-divs">Images</div>
@@ -95,6 +98,11 @@ p {
         top: 40%;
     }
 
+    #planets {
+        width: 1300px;
+        transform: translate(-430px, 0px);
+    }
+
  
   }
 
@@ -102,4 +110,27 @@ p {
 </style>
 
 <script>
+import { scrapeWeb } from "../scraper.js"
+
+    export default {
+        data() {
+            return {
+              titleList: [],
+              contentList: [],
+            }
+        }, 
+        mounted() {
+            var dlist = scrapeWeb()
+            console.log("dlist:", dlist)
+            dlist.then((data) => {
+                this.titleList = data.list.list
+                this.contentList = data.contentList.list
+                
+                console.log("data:", this.contentList)
+
+            
+            })
+           
+        }
+    }
 </script>
