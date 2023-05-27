@@ -8,7 +8,7 @@
                     <section class="home-divs-container">
                         <div class="home-divs">
                             Today's News
-                            <div>{{ titleList }}</div>
+                            <div></div>
                         </div>
                         <div class="home-divs">Images</div>
                         <div class="home-divs">News</div>
@@ -97,6 +97,12 @@ p {
     #home-title {
         top: 40%;
     }
+    
+    #planets {
+        width: 1300px;
+        transform: translate(-430px, 0px);
+    }
+
 
  
   }
@@ -104,28 +110,3 @@ p {
 
 </style>
 
-<script>
-import { scrapeWeb } from "../scraper.js"
-
-    export default {
-        data() {
-            return {
-              titleList: [],
-              contentList: [],
-            }
-        }, 
-        mounted() {
-            var dlist = scrapeWeb()
-            console.log("dlist:", dlist)
-            dlist.then((data) => {
-                this.titleList = data.list.list
-                this.contentList = data.contentList.list
-                
-                console.log("data:", this.contentList)
-
-            
-            })
-           
-        }
-    }
-</script>
