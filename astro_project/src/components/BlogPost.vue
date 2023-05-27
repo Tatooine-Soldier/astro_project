@@ -39,6 +39,13 @@
     #title-in {
         text-decoration: underline;
     }
+
+    @media screen and (max-width: 400px) {
+        .blog-post-container {
+            margin: 6%;
+        }
+    }
+
 </style>
 
 <script>

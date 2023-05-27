@@ -8,10 +8,10 @@
                     <section class="home-divs-container">
                         <div class="home-divs">
                             Today News
-                            <div>{{ titleList[0] }}</div>
+                            <!-- <div>{{ titleList[0] }}</div> -->
                         </div>
-                        <div class="home-divs">Images</div>
-                        <div class="home-divs">News</div>
+                        <div class="home-divs">Social Media</div>
+                        <div class="home-divs">Signup to our newsletter</div>
                         <div class="home-divs">Images</div>
                     </section>
                 </div>
@@ -34,7 +34,7 @@
 .home-divs-container {
     display: grid;
     grid-template-rows: auto auto;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% auto;
     row-gap: 5%;
     column-gap: 2%;
     margin-top: 24%;;
@@ -101,6 +101,15 @@ p {
     #planets {
         width: 1300px;
         transform: translate(-430px, 0px);
+    }
+
+    .home-divs {
+        padding: 15%;
+    }
+
+    .home-divs-container {
+        row-gap: 16%;
+        column-gap: 10%;
     }
 
  
