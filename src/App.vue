@@ -4,9 +4,6 @@ import Footer from "./components/Footer.vue";
 
 const deviceWidth = window.innerWidth < 600;
 
-
-document
-
 </script>
 
 <template>
@@ -68,7 +65,7 @@ body {
 
 @media screen and (max-width: 450px) {
   .router-content {
-    padding-top: 12%;
+    padding-top: 8%;
     height: 100vh;
   }
 
@@ -76,13 +73,13 @@ body {
 
 @media screen and (max-width: 350px) {
   .router-content {
-    padding-top: 15%;
+    padding-top: 12%;
   }
 }
 
 @media screen and (max-width: 300px) {
   .router-content {
-    padding-top: 18%;
+    padding-top: 15%;
   }
 }
 
