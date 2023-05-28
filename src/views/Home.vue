@@ -11,11 +11,11 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
                     <p><i id="home-quote">"The only true wisdom is in knowing you know nothing"<br>~ Socrates</i></p>
                     <section class="home-divs-container">
                         <div class="home-divs">
-                            Today's News
-                            <div></div>
+                            Today News
+                            <!-- <div>{{ titleList[0] }}</div> -->
                         </div>
-                        <div class="home-divs">Images</div>
-                        <div class="home-divs">News</div>
+                        <div class="home-divs">Social Media</div>
+                        <div class="home-divs">Signup to our newsletter</div>
                         <div class="home-divs">Images</div>
                     </section>
                 </div>
@@ -41,7 +41,7 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
 .home-divs-container {
     display: grid;
     grid-template-rows: auto auto;
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% auto;
     row-gap: 5%;
     column-gap: 2%;
     margin-top: 24%;;
@@ -108,12 +108,20 @@ p {
     #home-title {
         top: 40%;
     }
-    
+
     #planets {
         width: 1300px;
         transform: translate(-430px, 0px);
     }
 
+    .home-divs {
+        padding: 15%;
+    }
+
+    .home-divs-container {
+        row-gap: 16%;
+        column-gap: 10%;
+    }
 
  
   }
@@ -121,3 +129,28 @@ p {
 
 </style>
 
+<script>
+import { scrapeWeb } from "../scraper.js"
+
+    export default {
+        data() {
+            return {
+              titleList: [],
+              contentList: [],
+            }
+        }, 
+        mounted() {
+            var dlist = scrapeWeb()
+            console.log("dlist:", dlist)
+            dlist.then((data) => {
+                this.titleList = data.list.list
+                this.contentList = data.contentList.list
+                
+                console.log("data:", this.contentList)
+
+            
+            })
+           
+        }
+    }
+</script>

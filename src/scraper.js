@@ -31,7 +31,7 @@ export async function scrapeWeb() {
             if (i % 2 === 1) { //if odd index
                 splitString[i-1] += splitString[i][0]
                 var temp = splitString[i][1] + splitString[i+1] 
-                splitString[i+1] = temp
+                splitString[i+1] = temp 
                 list.addBlog(splitString[i-1]) 
             }
         }
