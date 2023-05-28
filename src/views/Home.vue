@@ -136,8 +136,8 @@ p {
     }
 
     #planets {
-        width: 1300px;
-        transform: translate(-430px, 0px);
+        width: 1500px;
+        transform: translate(-530px, 0px);
     }
 
     .home-divs {
