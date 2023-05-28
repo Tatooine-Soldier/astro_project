@@ -1,3 +1,7 @@
+<script setup>
+import NewsletterSignup from '../components/NewsletterSignup.vue';
+</script>
+
 <template>
     <section class="home-container">
         <section>
@@ -18,6 +22,9 @@
                 <img src="../assets/grey-plan-crop.jpg" id="planets"/>
             </section>
         </section>
+    </section>
+    <section class="newsletter-home">
+        <NewsletterSignup></NewsletterSignup>
     </section>
 </template>
 
@@ -53,6 +60,10 @@
     background-color: rgba(21, 21, 21, 0.75);
     cursor: pointer;
     
+}
+
+.newsletter-home {
+    display: none;
 }
 
 #home-quote {
