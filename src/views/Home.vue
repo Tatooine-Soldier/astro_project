@@ -1,31 +1,33 @@
 <script setup>
 import NewsletterSignup from '../components/NewsletterSignup.vue';
 </script>
-
 <template>
-    <section class="home-container">
-        <section>
-            <section class="home-inner">
-                <div id="home-title">
-                    <h2><b>COSMIC IRELAND</b></h2>
-                    <p><i id="home-quote">"The only true wisdom is in knowing you know nothing"<br>~ Socrates</i></p>
-                    <section class="home-divs-container">
-                        <div class="home-divs">
-                            Today News
-                            <!-- <div>{{ titleList[0] }}</div> -->
-                        </div>
-                        <div class="home-divs">Social Media</div>
-                        <div class="home-divs">Signup to our newsletter</div>
-                        <div class="home-divs">Images</div>
-                    </section>
-                </div>
-                <img src="../assets/grey-plan-crop.jpg" id="planets"/>
+    <section class="modal" id="modal">
+        <section class="home-container">
+            <section>
+                <section class="home-inner">
+                    <div id="home-title">
+                        <h2><b>COSMIC IRELAND</b></h2>
+                        <p><i id="home-quote">"The only true wisdom is in knowing you know nothing"<br>~ Socrates</i></p>
+                        <section class="home-divs-container">
+                            <div class="home-divs">
+                                Today News
+                                <!-- <div>{{ titleList[0] }}</div> -->
+                            </div>
+                            <div class="home-divs">Social Media</div>
+                            <div class="home-divs" @click="displayNewsLetter()">Signup to our newsletter</div>
+                            <div class="home-divs">Images</div>
+                        </section>
+                    </div>
+                    <img src="../assets/grey-plan-crop.jpg" id="planets"/>
+                </section>
             </section>
         </section>
     </section>
-    <section class="newsletter-home">
-        <NewsletterSignup></NewsletterSignup>
-    </section>
+    <section class="newsletter-home" id="newsletter-home">
+            <NewsletterSignup></NewsletterSignup>
+            <b @click="hideNews()" id="newsletter-ex">&times;</b>  
+        </section>
 </template>
 
 <style>
@@ -64,7 +66,18 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
 
 .newsletter-home {
     display: none;
+    position: fixed;
+    top: 20%;
+    margin: 0 auto;
+    z-index: 9998;
+    left: 40%;
 }
+
+.modal {
+    opacity: 1;
+    padding-bottom: 10%;;
+}
+
 
 #home-quote {
     font-size: 1.4em;;
@@ -100,6 +113,18 @@ p {
     font-size: 4em;;
 }
 
+#newsletter-ex {
+    top: 20%;
+    right: 40%;
+    font-size: 1.5em;;
+    position: fixed;
+    z-index: 9999;
+}
+
+#newsletter-ex:hover {
+    cursor: pointer;
+}
+
 @media screen and (max-width: 450px) {
     #home-title b {
         font-size: 2em;;
@@ -107,6 +132,7 @@ p {
 
     #home-title {
         top: 40%;
+        padding-top: 15%;;
     }
 
     #planets {
@@ -115,12 +141,16 @@ p {
     }
 
     .home-divs {
-        padding: 15%;
+        padding: 20%;
     }
 
     .home-divs-container {
         row-gap: 16%;
         column-gap: 10%;
+    }
+
+    .newsletter-home {
+        left: 15%;
     }
 
  
@@ -151,6 +181,21 @@ import { scrapeWeb } from "../scraper.js"
             
             })
            
+        },
+        methods: {
+            displayNewsLetter() {
+                console.log("clicked")
+                var d = document.getElementById("newsletter-home")
+                d.style.display = "block"
+                var m = document.getElementById("modal")
+                m.style.opacity = 0.4;   
+            },
+            hideNews() {
+                var d = document.getElementById("newsletter-home")
+                d.style.display = "none"
+                var m = document.getElementById("modal")
+                m.style.opacity = 1;   
+            }
         }
     }
 </script>
