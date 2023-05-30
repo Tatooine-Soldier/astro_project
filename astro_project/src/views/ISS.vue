@@ -289,6 +289,63 @@ export default {
             return timeString
         }
 
+        async function getFuture() {
+            var currentTime = Date.now()
+            var baseTime = Math.floor(currentTime / 1000)
+            var futureTimeZero = baseTime+120
+            var futureTimeZeroStr = futureTimeZero.toString()
+            var futureTimeOne = baseTime+240
+            var futureTimeOneStr = futureTimeOne.toString()
+            var futureTimeTwo = baseTime+360
+            var futureTimeTwoStr = futureTimeTwo.toString()
+
+            var futureTimeThree = baseTime+480
+            var futureTimeThreeStr = futureTimeThree.toString()
+            var futureTimeFour = baseTime+600
+            var futureTimeFourStr = futureTimeFour.toString()
+            var futureTimeFive = baseTime+720
+            var futureTimeFiveStr = futureTimeFive.toString()
+
+            var url = "https://api.wheretheiss.at/v1/satellites/25544/positions?timestamps="+baseTime+","+futureTimeZeroStr+","+futureTimeOneStr+","+futureTimeTwoStr+","+futureTimeThreeStr+","+futureTimeFourStr+","+futureTimeFiveStr
+            var res = await  fetch(url)
+            
+            var final = await res.json()
+
+            var listOfCoords = []
+
+            for (var point in final) {
+                var lat = final[point].latitude
+                var lng = final[point].longitude
+                var item = {
+                    lat: lat, 
+                    lng: lng
+                }
+                listOfCoords.push(item)
+            }
+
+            console.log("futture iss", final)
+            return listOfCoords
+        }
+
+        var listOfPoints = getFuture()
+        listOfPoints.then(data => {
+            console.log("data", data)
+            listOfPoints = data
+            drawPoints(listOfPoints)
+        })
+
+        function drawPoints(listOfPoints) {
+            setTimeout(() => {
+                var polyline = new google.maps.Polyline({
+                path: listOfPoints,
+                strokeColor: '#FF0000',
+                strokeOpacity: 1.0,
+                strokeWeight: 2,
+                map: map.value
+            }) 
+            }, 1000);
+
+        }
 
         return {currPos, mapDivHere, speed, time, altitude, visibility}
     },
