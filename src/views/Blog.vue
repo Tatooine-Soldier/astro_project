@@ -21,6 +21,7 @@ import { scrapeWeb } from "../scraper.js"
 <style>
 .blogs-container {
     margin: 0 auto;;
+
 }
 
 .blog-container {
@@ -97,6 +98,7 @@ import { scrapeWeb } from "../scraper.js"
 
     .blog-container {
         margin-top: 15%;;
+        background-color: var(--secondary-dark);
     }
 }
 

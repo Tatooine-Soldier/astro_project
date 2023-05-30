@@ -16,7 +16,7 @@
                 <div class="newsletter-email">
                     <label>Email: </label>
                     <input type="text"/>
-                    <input type="button" value="submit" />
+                    <input type="button" value="submit" @click="handleSubmit()"/>
                 </div>
             </section>
         </section>
@@ -85,9 +85,15 @@
 </style>
 
 <script>
+import { sanitise } from '../inputStrip';
 export default {
         data() {
             return {
+            }
+        },
+        methods: {
+            handleSubmit() {
+                sanitise()
             }
         }
     }
