@@ -127,7 +127,7 @@ table td {
 @media screen and (max-width: 450px) {
     .iss-container {
         padding: 1%;
-        padding-top: 9%;
+        padding-top: 15%;
         height: 100vh;
     }
 
@@ -192,6 +192,8 @@ export default {
         let time = ref(null)
         let altitude = ref(null)
         let visibility = ref(null)
+
+        let futureTimeStamps = []
         
         const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY})
         let mapDivHere = ref(null);
@@ -253,7 +255,7 @@ export default {
              
             updateMarker(map, lat, lng)
 
-            }, 20000)
+            }, 60000)
         }
 
         function updateMarker(map, lat, lng) {
@@ -264,7 +266,7 @@ export default {
 
           lat = lat.toString()
           lng =  lng.toString()
-          var contentString = "<b style='color:black;'>ISS Location<br><i>Lat: "+lat+"<br>Lng: "+lng+"</i></b>"
+          var contentString = "<b style='color:black;'>Current ISS Location<br><i>Lat: "+lat+"<br>Lng: "+lng+"</i></b>"
           const issWindow = new google.maps.InfoWindow({
             content: contentString,
             ariaLabel: "ISS",
@@ -292,23 +294,16 @@ export default {
         async function getFuture() {
             var currentTime = Date.now()
             var baseTime = Math.floor(currentTime / 1000)
-            var futureTimeZero = baseTime+120
-            var futureTimeZeroStr = futureTimeZero.toString()
-            var futureTimeOne = baseTime+240
-            var futureTimeOneStr = futureTimeOne.toString()
-            var futureTimeTwo = baseTime+360
-            var futureTimeTwoStr = futureTimeTwo.toString()
 
-            var futureTimeThree = baseTime+480
-            var futureTimeThreeStr = futureTimeThree.toString()
-            var futureTimeFour = baseTime+600
-            var futureTimeFourStr = futureTimeFour.toString()
-            var futureTimeFive = baseTime+720
-            var futureTimeFiveStr = futureTimeFive.toString()
+            var futureTimes = [];
+            var url = "https://api.wheretheiss.at/v1/satellites/25544/positions?timestamps="+baseTime
+            for (var i = 0; i < 45; i++) { //ISS roundtrip takes roughly 90 minutes 
+                var futureTime = baseTime + (120 * i); //get location every 2 minute interval
+                futureTimes.push(futureTime.toString());
+                url += ","+futureTime.toString()
+            }
 
-            var url = "https://api.wheretheiss.at/v1/satellites/25544/positions?timestamps="+baseTime+","+futureTimeZeroStr+","+futureTimeOneStr+","+futureTimeTwoStr+","+futureTimeThreeStr+","+futureTimeFourStr+","+futureTimeFiveStr
-            var res = await  fetch(url)
-            
+            var res = await fetch(url)
             var final = await res.json()
 
             var listOfCoords = []
@@ -321,6 +316,7 @@ export default {
                     lng: lng
                 }
                 listOfCoords.push(item)
+                futureTimeStamps.push(final[point].timestamp)
             }
 
             console.log("futture iss", final)
@@ -334,17 +330,59 @@ export default {
             drawPoints(listOfPoints)
         })
 
-        function drawPoints(listOfPoints) {
+        function drawPoints(listOfPoints) { //wait a second to draw the lines to ensure all data has been resolved from the promise
             setTimeout(() => {
                 var polyline = new google.maps.Polyline({
                 path: listOfPoints,
-                strokeColor: '#FF0000',
-                strokeOpacity: 1.0,
+                strokeColor: '#EE0011',
+                strokeOpacity: 0.75,
                 strokeWeight: 2,
+                strokeStyle: 'solid',
                 map: map.value
             }) 
+            drawCircles(listOfPoints)
             }, 1000);
 
+        }
+
+
+        function drawCircles(listOfPoints) {
+            for (var point in listOfPoints) {
+                const locCircle = new google.maps.Circle({
+                strokeColor: "#FF0000",
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: "#FF0000",
+                fillOpacity: 0.6,
+                map: map.value,
+                center: listOfPoints[point],
+                radius: 25000
+                });
+
+                const infowindow = new google.maps.InfoWindow({
+                    content: "<b style='color:black;'>"+convertUNIXtoDate(futureTimeStamps[point])+"</b>",
+                    ariaLabel: "Time",
+                });
+
+                locCircle.addListener("click", () => {
+                    infowindow.setPosition(locCircle.center)
+                    infowindow.open({
+                        anchor: locCircle,
+                        map,
+                    });
+                });
+            }
+        }
+
+        function convertUNIXtoDate(num) {
+            var date = new Date(num*1000)
+
+            var hours = date.getHours().toString()
+            var mins = date.getMinutes()
+
+            mins = (mins < 10) ? '0'+ mins : mins
+
+            return hours + ":" + mins 
         }
 
         return {currPos, mapDivHere, speed, time, altitude, visibility}
