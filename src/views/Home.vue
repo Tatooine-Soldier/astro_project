@@ -9,15 +9,31 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
                     <div id="home-title">
                         <h2><b>COSMIC IRELAND</b></h2>
                         <p><i id="home-quote">"The only true wisdom is in knowing you know nothing"<br>~ Socrates</i></p>
-                        <section class="home-divs-container">
+                        <section class="who-we-are">
+                            <section class="home-divs">
+                                <section>
+                                    <h2>Who Are We?</h2>
+                                </section>
+                                <section>
+                                    Cosmic Ireland is a passionate community of stargazers, astronomy enthusiasts, and space explorers based in Ireland. Our club is fueled by a shared love for the wonders of the universe and a desire to unravel its mysteries. 
+                                    With a diverse membership of astronomers, astrophotographers, and science enthusiasts of all levels, we come together to learn, inspire, and ignite the curiosity that lies within each of us. Through regular meetings, engaging workshops, and captivating stargazing sessions, 
+                                    we aim to create a space where members can delve into the realms of astronomy, expand their knowledge, and forge lasting connections with fellow cosmic adventurers. Cosmic Ireland is dedicated to fostering a sense of awe, wonder, and exploration of the vast cosmic expanse above us.
+                                </section>
+                            </section>
+                            <section class="under-who-we-are">
+                                <div class="home-divs" @click="displayNewsLetter()">Signup to our newsletter</div>
+                                <div class="home-divs">Celestial Charts</div>
+                            </section>
+                        </section>
+                        <!-- <section class="home-divs-container">
                             <div class="home-divs">
                                 Today News
-                                <!-- <div>{{ titleList[0] }}</div> -->
+                                
                             </div>
                             <div class="home-divs">Social Media</div>
                             <div class="home-divs" @click="displayNewsLetter()">Signup to our newsletter</div>
                             <div class="home-divs">Images</div>
-                        </section>
+                        </section> -->
                     </div>
                     <img src="../assets/grey-plan-crop.jpg" id="planets"/>
                 </section>
@@ -76,6 +92,26 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
 .modal {
     opacity: 1;
     padding-bottom: 10%;;
+}
+
+.who-we-are {
+    margin-top: 20%;
+}
+
+.who-we-are .home-divs {
+    font-size: 1.3em;
+    padding: 1%;
+}
+
+.under-who-we-are {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 2%;
+    margin-top: 2%;
+}
+
+.under-who-we-are .home-divs {
+    padding: 2%;
 }
 
 
@@ -153,6 +189,22 @@ p {
         left: 15%;
     }
 
+    .who-we-are {
+        margin-top: 40%;
+    }
+
+    .who-we-are .home-divs {
+        font-size: 1.2em;
+    }
+
+    #home-title {
+        width: 90%;
+    }
+
+    .under-who-we-are {
+        margin-top: 6%;
+    }
+
  
   }
 
@@ -180,7 +232,56 @@ import { scrapeWeb } from "../scraper.js"
 
             
             })
+
+            var locs =  getUserCoordinates()
+
+            var applicationId = "9a04b77b-eefb-475b-9faf-0fae016fa846"
+            var applicationSecret = "12663d817fa2cca98ddbfae137dd264c16001b050c74cd18085246be577f9fa01ad42d5ad34fbedfb12d4340f0a887008dc79035e4eeea13c51502257251ee3ff369d39849fde94d36f04ec8255ae6b7e6ff85693b30ac0561ba45aa51906f2aad5d81df4a8846ef12d63da56f965b54"
+            const authString = btoa(`${applicationId}:${applicationSecret}`);
+
+            fetch('https://api.astronomyapi.com/api/v2/bodies/positions?latitude=0.0&longitude=0.0&from_date=2012-02-20&to_date=2022-12-22&time=08:00:00', {
+            headers: {
+                'Authorization': 'Basic ' + authString
+            }
+            })
+            .then(response => {
+            // Handle the response
+            console.log("astro_api response", response.json().then(data => {
+                console.log("data", data)
+            }));
+            })
+            .catch(error => {
+            // Handle the error
+            });
            
+
+            function getUserCoordinates() {
+                var latitude
+                var longitude
+                if ("geolocation" in navigator) {
+                    // Get the current position
+                    navigator.geolocation.getCurrentPosition(
+                        function(position) {
+                        // Retrieve the latitude and longitude coordinates
+                        latitude = position.coords.latitude;
+                        longitude = position.coords.longitude;
+
+                        // Do something with the coordinates
+                        console.log("Latitude: " + latitude);
+                        console.log("Longitude: " + longitude);
+                        },
+                        function(error) {
+                        // Handle any errors that occur while retrieving the position
+                        console.log("Error getting location: " + error.message);
+                        }
+                    );
+                } else {
+                    // Geolocation is not supported by the browser
+                    console.log("Geolocation is not supported by this browser.");
+                }
+
+                return {lat: latitude, lng: longitude}
+            }
         },
         methods: {
             displayNewsLetter() {
@@ -196,6 +297,7 @@ import { scrapeWeb } from "../scraper.js"
                 var m = document.getElementById("modal")
                 m.style.opacity = 1;   
             }
+            
         }
     }
 </script>

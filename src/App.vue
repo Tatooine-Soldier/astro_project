@@ -66,7 +66,7 @@ body {
 @media screen and (max-width: 450px) {
   .router-content {
     padding-top: 8%;
-    height: 100vh;
+  
   }
 
 }
