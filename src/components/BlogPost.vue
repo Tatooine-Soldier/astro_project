@@ -32,8 +32,12 @@
     }
 
     .blog-post {
-        padding: 1%;
+        padding: 2%;
         font-size: 1.1em;
+    }
+
+    .blog-title {
+        margin-bottom: 2.5%;;
     }
 
     #title-in {
@@ -43,6 +47,10 @@
     @media screen and (max-width: 400px) {
         .blog-post-container {
             margin: 6%;
+        }
+
+        .blog-title {
+            margin-bottom: 5%;;
         }
     }
 

@@ -6,7 +6,7 @@
             </section>
             <section class="iss-subheading">
                 See the ISS location on the map below<br>
-                The map updates every 20 seconds
+                Press on the red points along the trajectory to view timestamp at that location 
             </section>
             <section class="map-grid">
                 <section class="map-container">
