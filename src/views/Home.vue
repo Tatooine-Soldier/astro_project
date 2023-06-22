@@ -22,7 +22,7 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
                             </section>
                             <section class="under-who-we-are">
                                 <div class="home-divs" @click="displayNewsLetter()">Signup to our newsletter</div>
-                                <div class="home-divs">Celestial Charts</div>
+                                <div class="home-divs"><router-link to="/charts">Celestial Charts</router-link></div>
                             </section>
                         </section>
                         <!-- <section class="home-divs-container">
@@ -220,6 +220,7 @@ import { ref } from 'vue';
             return {
               titleList: [],
               contentList: [],
+              planets: [],
             }
         }, 
         mounted() {
@@ -254,11 +255,13 @@ import { ref } from 'vue';
                 .then(response => {
                 // Handle the response
                 console.log("astro_api response", response.json().then(data => {
-                    console.log("data", data)
+                    console.log("data", data.data.table.rows)
+                    this.planets = data.data.table.rows
                 }));
                 })
                 .catch(error => {
                 // Handle the error
+                    console.error("couldn't fetch response")
                 });
             })
            
