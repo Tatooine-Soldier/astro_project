@@ -25,6 +25,9 @@ import PlanetsInfoComponent from "../components/PlanetsInfoComponent.vue"
                 infoMetrics: {},
                 planets: [],
                 planetsProp: {},
+                planetsDistances: [],
+                planetsRising: [],
+                planetsMagnitude: [],
             }
         }, 
         mounted() {
@@ -51,14 +54,19 @@ import PlanetsInfoComponent from "../components/PlanetsInfoComponent.vue"
                     console.log("data charts", data.data.table.rows)
                     this.planets = data.data.table.rows
                     for (var i = 0; i < this.planets.length; i++) {
-                        this.planetData.push(this.planets[i].entry.id)
+                        this.planetData.push(this.planets[i].entry.id) //names
                         this.infoMetrics[i] = this.planets[i].cells[0]
+                        this.planetsDistances.push(this.planets[i].cells[0].distance.fromEarth.km) //distance from earth
+                        this.planetsRising.push(this.planets[i].cells[0].position.constellation.name) //constellation
+                        this.planetsMagnitude.push(this.planets[i].cells[0].extraInfo.magnitude) //brightness
                     }
                     this.planetsProp = {
                         planetNames: this.planetData,
-                        planetInfo: this.infoMetrics
+                        planetDistances: this.planetsDistances,
+                        planetRising: this.planetsRising,
+                        planetMagnitude: this.planetsMagnitude
                     }
-                    console.log("listed planet names", this.planetData, this.infoMetrics)
+                    console.log("listed planet names", this.planetsDistances, this.planetsRising, this.planetsProp.planetNames)
                     
                 }));
                 })
