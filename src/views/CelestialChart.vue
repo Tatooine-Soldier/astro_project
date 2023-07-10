@@ -3,7 +3,6 @@ import PlanetsInfoComponent from "../components/PlanetsInfoComponent.vue"
 </script>
 
 <template>
-    Celestial chart
     <!-- <p>Celestial chartCelestial chartCelestial chartCelestial chartCelestial chartCelestial chart</p> -->
     
     <PlanetsInfoComponent :planetData="planetsProp"></PlanetsInfoComponent>

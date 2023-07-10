@@ -28,7 +28,7 @@
                         </tr>
                     </table>
                     <div class="video-container">
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/86YLFOog4GM" frameborder="0" allowfullscreen autoplay></iframe>
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/KG6SL6Mf7ak" frameborder="0" allowfullscreen autoplay></iframe>
                     </div>
                 </section>
             </section>

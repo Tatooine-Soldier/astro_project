@@ -1,10 +1,10 @@
 export default class Planet {
-    constructor(name, order, distance, rising, magnitiude) {
+    constructor(name, order, distance, rising, magnitude) {
         this.name = name;
         this.order = order;
         this.distance = distance;
         this.rising = rising;
-        this.magnitiude = magnitiude;
+        this.magnitude = magnitude;
     }
 
     getName() {
@@ -20,6 +20,6 @@ export default class Planet {
     }
 
     getMagnitiude() {
-        return this.magnitiude
+        return this.magnitude
     }
 }
