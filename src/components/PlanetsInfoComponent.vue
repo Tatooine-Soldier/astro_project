@@ -63,7 +63,6 @@ import PlanetModalComponent from "../components/PlanetModalComponent.vue"
 <script>
 import { onMounted } from 'vue';
 import Planet from '../PlanetClass.js'
-import parse from "nodemon/lib/cli/parse";
 
 
     export default {
