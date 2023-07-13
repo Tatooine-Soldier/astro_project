@@ -33,6 +33,13 @@
             <section class="pmodal-fields">
                 {{ clickInfo.magnitude }}
             </section>
+
+            <section class="pmodal-fields">
+                Radius(km): 
+            </section>
+            <section class="pmodal-fields">
+                {{ clickInfo.radius }}
+            </section>
         </section>
     </section>
 </template>

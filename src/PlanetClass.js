@@ -1,10 +1,11 @@
 export default class Planet {
-    constructor(name, order, distance, rising, magnitude) {
+    constructor(name, order, distance, rising, magnitude, radius) {
         this.name = name;
         this.order = order;
         this.distance = distance;
         this.rising = rising;
         this.magnitude = magnitude;
+        this.radius = radius;
     }
 
     getName() {

@@ -145,17 +145,17 @@ import Planet from '../PlanetClass.js'
             initPlanets() {
                 var sun, moon, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto
                 const planetsArray = [
-                    sun = new Planet(null, 0, null, null, null), 
-                    moon = new Planet(null, null, null, null, null),
-                    mercury = new Planet(null, 1, null, null, null),
-                    venus = new Planet(null, 2, null, null, null),
-                    earth = new Planet(null, 3, null, null, null),
-                    mars = new Planet(null, 4, null, null, null),
-                    jupiter = new Planet(null, 5, null, null, null),
-                    saturn = new Planet(null, 6, null, null, null),
-                    uranus = new Planet(null, 7, null, null, null),
-                    neptune = new Planet(null, 8, null, null, null),
-                    pluto = new Planet(null, 9, null, null, null),
+                    sun = new Planet(null, 0, null, null, null, 696340), 
+                    moon = new Planet(null, 3, null, null, null, 1737),
+                    mercury = new Planet(null, 1, null, null, null, 2440),
+                    venus = new Planet(null, 2, null, null, null, 6051),
+                    earth = new Planet(null, 3, null, null, null, 6371),
+                    mars = new Planet(null, 4, null, null, null, 3389),
+                    jupiter = new Planet(null, 5, null, null, null, 69911),
+                    saturn = new Planet(null, 6, null, null, null, 58323),
+                    uranus = new Planet(null, 7, null, null, null, 25362),
+                    neptune = new Planet(null, 8, null, null, null, 24622),
+                    pluto = new Planet(null, 9, null, null, null, 1188),
                 ]
 
                 return planetsArray
@@ -165,9 +165,10 @@ import Planet from '../PlanetClass.js'
                 this.clickedInfo = {
                     name: this.planetObjs[index].name,
                     order: this.planetObjs[index].order,
-                    distance: this.planetObjs[index].distance,
+                    distance: parseFloat(this.planetObjs[index].distance).toFixed(2),
                     rising: this.planetObjs[index].rising,
-                    magnitude: this.planetObjs[index].magnitude
+                    magnitude: this.planetObjs[index].magnitude,
+                    radius: this.planetObjs[index].radius
                 }
                 
             }
