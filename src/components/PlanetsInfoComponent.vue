@@ -58,6 +58,23 @@ import PlanetModalComponent from "../components/PlanetModalComponent.vue"
          margin: 3% 0%;
     } 
 
+    @media screen and (max-width: 450px) {
+        .inner-planets {
+            grid-template-columns: 100%;
+            grid-template-rows: auto auto auto auto auto auto auto auto auto auto auto; 
+            row-gap: 1%;
+        }
+
+        #planet-heading h3 {
+            margin: 0%;
+        }
+
+        #planet-heading {
+            padding: 4%;
+            margin-top: 10%;
+        }
+    }
+
 </style>
 
 <script>

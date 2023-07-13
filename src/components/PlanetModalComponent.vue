@@ -75,11 +75,32 @@
 
 .pmodal-grid {
     display: grid;
-    grid-template-rows: auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto;
     grid-template-columns: auto auto;
     row-gap: 3%;
     align-items: center;
     justify-items: center;
+}
+
+
+@media screen and (max-width: 450px) {
+
+    .pmodal-container {
+        width: 85%;
+        padding: 6%;
+        padding-top: 2%;;
+        font-size: 1.1em;
+    }
+
+    .pmodal-grid .pmodal-fields {
+        width: 100%;
+    }
+
+    .pmodal-name h3 {
+        margin-bottom: 2%;
+    }
+
+    
 }
 </style>
 
