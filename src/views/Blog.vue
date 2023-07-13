@@ -97,7 +97,7 @@ import { scrapeWeb } from "../scraper.js"
     }
 
     .blog-container {
-        margin-top: 24%;;
+        margin-top: 27%;;
         background-color: var(--secondary-dark);
     }
 }
