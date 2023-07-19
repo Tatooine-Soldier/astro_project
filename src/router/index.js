@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Blog from '../views/Blog.vue'
 import iss from '../views/ISS.vue'
 import CelestialChart from '../views/CelestialChart.vue'
+import SpaceInvaders from '../views/SpaceInvaders.vue'
 
 //import PageNotFound from '../views/PageNotFound.vue'
 
@@ -28,7 +29,11 @@ const router = createRouter({
     { 
       path: '/charts', 
       component: CelestialChart
-    },  
+    },
+    { 
+      path: '/game', 
+      component: SpaceInvaders
+    },    
     // {
     //   path: '/:pathMatch(.*)*',
     //   name: 'pagenotfound',

@@ -23,6 +23,8 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
                             <section class="under-who-we-are">
                                 <div class="home-divs" @click="displayNewsLetter()">Signup to our newsletter</div>
                                 <div class="home-divs"><router-link to="/charts">Celestial Charts</router-link></div>
+                                <div class="home-divs"><router-link to="/game">Space Invaders game</router-link></div>
+                                <div class="home-divs"><router-link to="/charts">Celestial Charts</router-link></div>
                             </section>
                         </section>
                         <!-- <section class="home-divs-container">
@@ -80,6 +82,11 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
     
 }
 
+.home-divs a {
+    color: white;
+    text-decoration: none;
+}
+
 .newsletter-home {
     display: none;
     position: fixed;
@@ -106,8 +113,10 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
 .under-who-we-are {
     display: grid;
     grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
     column-gap: 2%;
-    margin-top: 2%;
+    row-gap: 20%;
+    margin-top: 5%;
 }
 
 .under-who-we-are .home-divs {
