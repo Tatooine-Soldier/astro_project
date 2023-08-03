@@ -1,1 +1,7 @@
-/*  /index.html
+/home               /
+/iss-tracker        /iss-tracker
+/blog               /blog
+/charts             /charts
+/game               /game
+/weather            /weather
+/:pathMatch(.*)*    /:pathMatch(.*)*
