@@ -108,6 +108,7 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
 .who-we-are .home-divs {
     font-size: 1.3em;
     padding: 1%;
+    padding-bottom: 3%;;
 }
 
 .under-who-we-are {
@@ -121,7 +122,10 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
 
 .under-who-we-are .home-divs {
     padding: 2%;
+    
 }
+
+
 
 
 #home-quote {
