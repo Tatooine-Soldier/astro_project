@@ -29,23 +29,24 @@
 .weather-container {
     padding: 1%;
     padding-top: 2%;;
+    padding-bottom: 10%;;
 }
 
 @media screen and (max-width: 650px) {
     .weather-container {
-        padding-top: 4%;;
+        padding-top: 8%;;
     }
 }
 
 @media screen and (max-width: 450px) {
     .weather-container {
-        padding-top: 6%;;
+        padding-top: 11%;;
     }
 }
 
 @media screen and (max-width: 400px) {
     .weather-container {
-        padding-top: 12%;;
+        padding-top: 15%;;
     }
 }
 
