@@ -29,9 +29,9 @@
                         </section>
                     </section>
                     <section class="weather-today-details-side">
-                        <div class="details-side">Max Temperature: {{ daily.maxTemp[0] }}&deg;C</div>
-                        <div class="details-side">Min Temperature: {{ daily.minTemp[0] }}&deg;C</div>
-                        <div class="details-side">Total Predicted Precipitation: {{ daily.precipitationAmount[0] }}mm</div>
+                        <div class="details-side">Max Temperature: <b>{{ daily.maxTemp[0] }}&deg;C</b></div>
+                        <div class="details-side">Min Temperature: <b>{{ daily.minTemp[0] }}&deg;C</b></div>
+                        <div class="details-side">Total Predicted Precipitation: <b>{{ daily.precipitationAmount[0] }}mm</b></div>
                     </section>
                 </section>
             </section>
@@ -149,6 +149,11 @@
             width: 90%;
         }
 
+        .weather-today-details {
+            display: grid;
+            grid-template-columns: 55% 45%;;
+        }
+
         .weather-today-details-side {
             font-size: 1em;;
         }
@@ -156,6 +161,7 @@
         .weather-five-day {
             display: grid;
             grid-template-columns: auto;
+            padding-top: 5%;
         }
 
         .weather-cards {
