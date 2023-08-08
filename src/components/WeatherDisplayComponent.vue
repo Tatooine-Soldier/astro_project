@@ -7,22 +7,22 @@
                 <section class="weather-today-details">
                     <section>
                         <section v-if="cloud">
-                            <img src="../assets/large-weather.png" class="big-weather-image" id="big-weather-image"/>
+                            <img src="../assets/large-weather.png" alt="cloudy" class="big-weather-image" id="big-weather-image"/>
                         </section>
                         <section v-if="lightning">
-                            <img src="../assets/large-weather-lightning.png" class="big-weather-image" id="big-weather-image"/>
+                            <img src="../assets/large-weather-lightning.png" alt="lightning" class="big-weather-image" id="big-weather-image"/>
                         </section>
                         <section v-if="fullRain">
-                            <img src="../assets/large-weather-fullRain.png" class="big-weather-image" id="big-weather-image"/>
+                            <img src="../assets/large-weather-fullRain.png" alt="Heavy Rain" class="big-weather-image" id="big-weather-image"/>
                         </section>
                         <section v-if="halfRain">
-                            <img src="../assets/large-weather-haflRain.png" class="big-weather-image" id="big-weather-image"/>
+                            <img src="../assets/large-weather-haflRain.png" alt="Light Rain" class="big-weather-image" id="big-weather-image"/>
                         </section>
                         <section v-if="halfSun">
-                            <img src="../assets/large-weather-cloudSun.png" class="big-weather-image" id="big-weather-image"/>
+                            <img src="../assets/large-weather-cloudSun.png" alt="Broken Sunshine" class="big-weather-image" id="big-weather-image"/>
                         </section>
                         <section v-if="sun">
-                            <img src="../assets/sun.png" class="big-weather-image" id="big-weather-image"/>
+                            <img src="../assets/sun.png" alt="Sunshine" class="big-weather-image" id="big-weather-image"/>
                         </section>
                         <section v-else>
                             
@@ -31,7 +31,7 @@
                     <section class="weather-today-details-side">
                         <div class="details-side">Max Temperature: <b>{{ daily.maxTemp[weatherIndex] }}&deg;C</b></div>
                         <div class="details-side">Min Temperature: <b>{{ daily.minTemp[weatherIndex] }}&deg;C</b></div>
-                        <div class="details-side">Total Predicted Precipitation: <b>{{ daily.precipitationAmount[weatherIndex] }}mm</b></div>
+                        <div class="details-side">Total <div id="word-precipitation">Predicted</div> Precipitation: <b>{{ daily.precipitationAmount[weatherIndex] }}mm</b></div>
                     </section>
                 </section>
             </section>
@@ -96,17 +96,20 @@
 
     .weather-cards {
         border: blue solid .5px;
+        background-color: #414141;
         margin: 2%;
         margin-left: 1.5%;
         margin-right: 1.5%;
         padding: 2%;
         display: grid;
         grid-template-rows: auto;
+        box-shadow: 7px 10px 5px #2f2f2f;;
     }
 
     .weather-cards:hover {
         cursor: pointer;
-        background-color: #4b4b4b;
+        transform: scale(1.1);
+
     }
 
     .weather-five-day { 
@@ -150,7 +153,7 @@
         }
 
         .weather-today-inner {
-            width: 90%;
+            width: 95%;
         }
 
         .weather-today-details {
@@ -159,17 +162,26 @@
         }
 
         .weather-today-details-side {
-            font-size: 1em;;
+            font-size: 1.1em;;
         }
 
         .weather-five-day {
             display: grid;
             grid-template-columns: auto;
+            row-gap: 1%;
             padding-top: 5%;
         }
 
         .weather-cards {
             width: 300px;
+        }
+
+        .weather-today {
+            padding-bottom: 6%;;
+        }
+
+        #word-precipitation {
+            display: none;
         }
     }
 
