@@ -3,35 +3,35 @@
         
         <section class="weather-today">
             <section class="weather-today-inner">
-                <b id="today-title">{{ daily.timeDays[0] }}, {{ daily.timeDates[0] }}</b>
+                <b id="today-title">{{ daily.timeDays[weatherIndex] }}, {{ daily.timeDates[weatherIndex] }}</b>
                 <section class="weather-today-details">
                     <section>
                         <section v-if="cloud">
-                            <img src="../assets/large-weather.png" class="big-weather-image"/>
+                            <img src="../assets/large-weather.png" class="big-weather-image" id="big-weather-image"/>
                         </section>
                         <section v-if="lightning">
-                            <img src="../assets/large-weather-lightning.png" class="big-weather-image"/>
+                            <img src="../assets/large-weather-lightning.png" class="big-weather-image" id="big-weather-image"/>
                         </section>
                         <section v-if="fullRain">
-                            <img src="../assets/large-weather-fullRain.png" class="big-weather-image"/>
+                            <img src="../assets/large-weather-fullRain.png" class="big-weather-image" id="big-weather-image"/>
                         </section>
                         <section v-if="halfRain">
-                            <img src="../assets/large-weather-haflRain.png" class="big-weather-image"/>
+                            <img src="../assets/large-weather-haflRain.png" class="big-weather-image" id="big-weather-image"/>
                         </section>
                         <section v-if="halfSun">
-                            <img src="../assets/large-weather-cloudSun.png" class="big-weather-image"/>
+                            <img src="../assets/large-weather-cloudSun.png" class="big-weather-image" id="big-weather-image"/>
                         </section>
                         <section v-if="sun">
-                            <img src="../assets/sun.png" class="big-weather-image"/>
+                            <img src="../assets/sun.png" class="big-weather-image" id="big-weather-image"/>
                         </section>
                         <section v-else>
                             
                         </section>
                     </section>
                     <section class="weather-today-details-side">
-                        <div class="details-side">Max Temperature: <b>{{ daily.maxTemp[0] }}&deg;C</b></div>
-                        <div class="details-side">Min Temperature: <b>{{ daily.minTemp[0] }}&deg;C</b></div>
-                        <div class="details-side">Total Predicted Precipitation: <b>{{ daily.precipitationAmount[0] }}mm</b></div>
+                        <div class="details-side">Max Temperature: <b>{{ daily.maxTemp[weatherIndex] }}&deg;C</b></div>
+                        <div class="details-side">Min Temperature: <b>{{ daily.minTemp[weatherIndex] }}&deg;C</b></div>
+                        <div class="details-side">Total Predicted Precipitation: <b>{{ daily.precipitationAmount[weatherIndex] }}mm</b></div>
                     </section>
                 </section>
             </section>
@@ -40,22 +40,22 @@
             <section class="weather-cards" v-for="n in 5" :key="n">
                 <div class="card-heading">{{ daily.timeDays[n] }}</div>
                 <section class="small-icon-container">
-                    <section v-if="smallArray[n] === 'cloud'">
+                    <section v-if="smallArray[n] === 'cloud'" @click="logClick(n)">
                         <img src="../assets/SMALL-large-weather.png" />
                     </section>
                     <section v-if="smallArray[n] === 'lightning'">
                         <img src="../assets/SMALL-large-weather.png" />
                     </section>
-                    <section v-if="smallArray[n] === 'fullRain'">
+                    <section v-if="smallArray[n] === 'fullRain'" @click="logClick(n)">
                         <img src="../assets/SMALL-large-weather-fullRain.png" />
                     </section>
-                    <section v-if="smallArray[n] === 'halfRain'">
+                    <section v-if="smallArray[n] === 'halfRain'" @click="logClick(n)">
                         <img src="../assets/SMALL-large-weather-haflRain.png" />
                     </section>
-                    <section v-if="smallArray[n] === 'halfSun'">
+                    <section v-if="smallArray[n] === 'halfSun'" @click="logClick(n)">
                         <img src="../assets/SMALL-large-weather-cloudSun.png" />
                     </section>
-                    <section v-if="smallArray[n] === 'sun'">
+                    <section v-if="smallArray[n] === 'sun'" @click="logClick(n)">
                         <img src="../assets/SMALL-sun.png" />
                     </section>
                     <section v-else>
@@ -138,6 +138,10 @@
         font-size: 2em;;
     }
 
+    #big-weather-image {
+
+    }
+
     @media screen and (max-width: 650px) {
 
         .big-weather-image {
@@ -198,7 +202,8 @@
             smallCloud: "cloud",
             smallHalfSun: "halfSun",
             smallSun: "sun",
-            smallArray: []
+            smallArray: [],
+            weatherIndex: 0
             // smallFullRain: false,
             // smallHalfRain: false,
             // smallLightning: false,
@@ -245,6 +250,41 @@
                 console.log("daysArray-->",daysArray)
             }
             this.smallArray = daysArray
+        },
+        logClick(index) {
+            console.log("logIndex==> ", index)
+            this.weatherIndex = index
+            console.log(this.smallArray[index])
+            switch(this.smallArray[index]) {
+                case "sun": 
+                    this.sun = true;
+                    this.fullRain = false;
+                    this.halfRain = false;
+                    this.halfSun = false;
+                    this.cloud = false;
+                    break;
+                case "fullRain":
+                    this.sun = false;
+                    this.fullRain = true;
+                    this.halfRain = false;
+                    this.halfSun = false;
+                    this.cloud = false;
+                    break;
+                case "halfRain":
+                    this.sun = false;
+                    this.fullRain = false;
+                    this.halfRain = true;
+                    this.halfSun = false;
+                    this.cloud = false;
+                    break;
+                case "cloud":
+                    this.sun = false;
+                    this.fullRain = false;
+                    this.halfRain = false;
+                    this.halfSun = false;
+                    this.cloud = true;
+                    break;
+            }
         }
     }
 }
