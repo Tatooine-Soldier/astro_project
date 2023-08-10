@@ -5,6 +5,7 @@ import iss from '../views/ISS.vue'
 import CelestialChart from '../views/CelestialChart.vue'
 import SpaceInvaders from '../views/SpaceInvaders.vue'
 import Weather from '../views/Weather.vue'
+import Contact from '../views/Contact.vue'
 
 //import PageNotFound from '../views/PageNotFound.vue'
 
@@ -38,6 +39,10 @@ const router = createRouter({
     {
       path: '/weather',
       component: Weather
+    },
+    {
+      path: '/contact',
+      component: Contact
     }
     // {
     //   path: '/:pathMatch(.*)*',
