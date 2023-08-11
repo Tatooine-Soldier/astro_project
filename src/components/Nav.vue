@@ -8,7 +8,7 @@
                 <ul>
                     <li><router-link to="/">Home</router-link></li>
                     <li @click="displayDropDown()"><router-link to="/blog">Blog</router-link></li>
-                    <li><router-link to="/iss-tracker">ISS Tracker</router-link></li>
+                    <li><router-link to="/contact">Contact</router-link></li>
                 </ul>
             </section>
         </section>

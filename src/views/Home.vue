@@ -21,10 +21,10 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
                                 </section>
                             </section>
                             <section class="under-who-we-are">
-                                <div class="home-divs" @click="displayNewsLetter()">Signup to our newsletter</div>
-                                <div class="home-divs"><router-link to="/charts">Celestial Charts</router-link></div>
-                                <div class="home-divs"><router-link to="/game">Space Invaders game</router-link></div>
+                                <div class="home-divs"><router-link to="/iss-tracker">ISS Tracker</router-link></div>
                                 <div class="home-divs"><router-link to="/weather">Weather Forecast</router-link></div>
+                                <div class="home-divs"><router-link to="/charts">Celestial Charts</router-link></div>
+                                <div class="home-divs" @click="displayNewsLetter()">Signup to our newsletter</div>
                             </section>
                         </section>
                         <!-- <section class="home-divs-container">
