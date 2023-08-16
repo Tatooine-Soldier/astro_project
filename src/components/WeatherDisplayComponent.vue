@@ -32,6 +32,7 @@
                         <div class="details-side">Max Temperature: <b>{{ daily.maxTemp[weatherIndex] }}&deg;C</b></div>
                         <div class="details-side">Min Temperature: <b>{{ daily.minTemp[weatherIndex] }}&deg;C</b></div>
                         <div class="details-side">Total <div id="word-precipitation">Predicted</div> Precipitation: <b>{{ daily.precipitationAmount[weatherIndex] }}mm</b></div>
+                        <div v-if="hourlyReady">{{ hourlyData.timeList[0] }}</div>
                     </section>
                 </section>
             </section>
@@ -65,6 +66,7 @@
                 <div>{{ daily.minTemp[n] }}&deg;C - {{ daily.maxTemp[n] }}&deg;C</div>
             </section>
         </section>
+       
    </section>
     
 </template>
@@ -199,9 +201,13 @@
 </style>
 
 <script>
+    import { ref, watch } from 'vue';
+
     export default {
     data() {
         return {
+            hourlyData: {},
+            hourlyReady: false,
             fullRain: false,
             halfRain: false,
             lightning: false,
@@ -227,11 +233,19 @@
     props: {
         daily: {
             type: Object
+        },
+        hourly: {
+            type: Object
         }
     },
+
     mounted() {
         this.calculateWeatherIconToday();
-        this.calculateSmallWeatherIcon()
+        this.calculateSmallWeatherIcon();
+    },
+
+    updated() {
+        this.aggregateHourly()
     },
     methods: {
         calculateWeatherIconToday() {
@@ -297,6 +311,60 @@
                     this.cloud = true;
                     break;
             }
+        },
+        aggregateHourly() {
+            console.log("hourly hourly-->", this.hourly.hourly)
+            var listOfLists = []
+            var listOfHours = [] //7 lists in a list, each list contains the hours of that day
+            var i = 0;
+            for (var hour in this.hourly.hourly.time) {
+                if (i !== 24 ) {
+                    listOfHours.push(this.hourly.hourly.time[hour])
+                } else {
+                    listOfLists.push(listOfHours)
+                    listOfHours = []
+                    listOfHours.push(this.hourly.hourly.time[hour])
+                    i = 0
+                }
+                i += 1
+            }
+
+            var listOfListsClouds = []
+            var listOfClouds = []
+            i = 0
+            for (var cloud in this.hourly.hourly.cloudcover) {
+                if (i !== 24 ) {
+                    listOfClouds.push(this.hourly.hourly.cloudcover[cloud])
+                } else {
+                    listOfListsClouds.push(listOfClouds)
+                    listOfClouds = []
+                    listOfClouds.push(this.hourly.hourly.cloudcover[cloud])
+                    i = 0
+                }
+                i += 1
+            }
+
+            var listOfListsPrecipitation = []
+            var listOfPrecipitation = []
+            i = 0
+            for (var rain in this.hourly.hourly.precipitation_probability) {
+                if (i !== 24 ) {
+                    listOfPrecipitation.push(this.hourly.hourly.precipitation_probability[rain])
+                } else {
+                    listOfListsPrecipitation.push(listOfPrecipitation)
+                    listOfPrecipitation = []
+                    listOfPrecipitation.push(this.hourly.hourly.precipitation_probability[rain])
+                    i = 0
+                }
+                i += 1
+            }
+            this.hourlyData = {
+                timeList: listOfLists,
+                cloudList: listOfListsClouds,
+                precipitationList: listOfListsPrecipitation
+            }
+            this.hourlyReady = true
+           
         }
     }
 }

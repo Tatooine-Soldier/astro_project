@@ -8,7 +8,7 @@
             <section>
                 Today's Weather Forecast:
                 <section v-if="dailyWeatherData">
-                    <WeatherDisplayComponent :daily="dailyWeatherData"></WeatherDisplayComponent>
+                    <WeatherDisplayComponent :daily="dailyWeatherData" :hourly="weatherData"></WeatherDisplayComponent>
                 </section>
                 
             </section>
@@ -90,7 +90,7 @@ export default {
                         this.precipitationArray[i] = this.weatherData.hourly.precipitation_probability[i]
                         this.temperatureArray[i] = this.weatherData.hourly.temperature_2m[i]
                     }
-                    //console.log("fetched hourly weather-->", this.cloudcoverArray, this.precipitationArray, this.temperatureArray)
+                    console.log("fetched hourly weather-->", this.weatherData, this.cloudcoverArray, this.precipitationArray, this.temperatureArray)
                 })
                 .catch((error) => {
                     console.log("error: ", error)
