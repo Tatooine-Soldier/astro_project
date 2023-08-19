@@ -33,6 +33,7 @@
                         <div class="details-side">Min Temperature: <b>{{ daily.minTemp[weatherIndex] }}&deg;C</b></div>
                         <div class="details-side">Total <div id="word-precipitation">Predicted</div> Precipitation: <b>{{ daily.precipitationAmount[weatherIndex] }}mm</b></div>
                         <div v-if="hourlyReady">{{ hourlyData.timeList[0] }}</div>
+                        <!-- {{ childMessage }} -->
                     </section>
                 </section>
             </section>
@@ -238,14 +239,23 @@
             type: Object
         }
     },
+    setup(props) {
+        const childMessage = ref(props.message);
+
+        return {
+            childMessage,
+        };
+    },
+    watch: {
+        hourly(newValue) {
+            this.childMessage = this.aggregateHourly(newValue)
+        },
+    },
 
     mounted() {
         this.calculateWeatherIconToday();
         this.calculateSmallWeatherIcon();
-    },
 
-    updated() {
-        this.aggregateHourly()
     },
     methods: {
         calculateWeatherIconToday() {
@@ -312,18 +322,18 @@
                     break;
             }
         },
-        aggregateHourly() {
-            console.log("hourly hourly-->", this.hourly.hourly)
+        aggregateHourly(val) {
+            console.log("hourly hourly-->", val.hourly.time)
             var listOfLists = []
             var listOfHours = [] //7 lists in a list, each list contains the hours of that day
             var i = 0;
-            for (var hour in this.hourly.hourly.time) {
+            for (var hour in val.hourly.time) {
                 if (i !== 24 ) {
-                    listOfHours.push(this.hourly.hourly.time[hour])
+                    listOfHours.push(val.hourly.time[hour])
                 } else {
                     listOfLists.push(listOfHours)
                     listOfHours = []
-                    listOfHours.push(this.hourly.hourly.time[hour])
+                    listOfHours.push(val.hourly.time[hour])
                     i = 0
                 }
                 i += 1
@@ -332,13 +342,13 @@
             var listOfListsClouds = []
             var listOfClouds = []
             i = 0
-            for (var cloud in this.hourly.hourly.cloudcover) {
+            for (var cloud in val.hourly.cloudcover) {
                 if (i !== 24 ) {
-                    listOfClouds.push(this.hourly.hourly.cloudcover[cloud])
+                    listOfClouds.push(val.hourly.cloudcover[cloud])
                 } else {
                     listOfListsClouds.push(listOfClouds)
                     listOfClouds = []
-                    listOfClouds.push(this.hourly.hourly.cloudcover[cloud])
+                    listOfClouds.push(val.hourly.cloudcover[cloud])
                     i = 0
                 }
                 i += 1
@@ -347,23 +357,29 @@
             var listOfListsPrecipitation = []
             var listOfPrecipitation = []
             i = 0
-            for (var rain in this.hourly.hourly.precipitation_probability) {
+            for (var rain in val.hourly.precipitation_probability) {
                 if (i !== 24 ) {
-                    listOfPrecipitation.push(this.hourly.hourly.precipitation_probability[rain])
+                    listOfPrecipitation.push(val.hourly.precipitation_probability[rain])
                 } else {
                     listOfListsPrecipitation.push(listOfPrecipitation)
                     listOfPrecipitation = []
-                    listOfPrecipitation.push(this.hourly.hourly.precipitation_probability[rain])
+                    listOfPrecipitation.push(val.hourly.precipitation_probability[rain])
                     i = 0
                 }
                 i += 1
             }
-            this.hourlyData = {
+            return {
                 timeList: listOfLists,
                 cloudList: listOfListsClouds,
                 precipitationList: listOfListsPrecipitation
             }
-            this.hourlyReady = true
+           
+            // this.hourlyData = {
+            //     timeList: listOfLists,
+            //     cloudList: listOfListsClouds,
+            //     precipitationList: listOfListsPrecipitation
+            // }
+            // this.hourlyReady = true
            
         }
     }
