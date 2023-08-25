@@ -74,7 +74,6 @@
 
 <style>
     .weather-component-container {
-        
         padding: 2%;
     }
 
