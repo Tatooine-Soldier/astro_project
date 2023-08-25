@@ -115,7 +115,7 @@ input {
 /* Style for the input when focused */
 input:focus {
   border-color: var(--primary-light);
-  box-shadow: 0 0 5px rgba(255, 106, 0, 0.5);
+  box-shadow: 0 0 12px rgba(255, 106, 0, 0.5);
 }
 
 .chatbot-submit {
@@ -223,10 +223,12 @@ input:focus {
     clearInputField.value = ""
     
     var lowerInput = userInput.toLowerCase()
-    if (lowerInput.includes("hello")) {
-      chatReply.innerHTML = "Hi there!"
+    if (lowerInput.includes("hello") || lowerInput.includes("hi") ) {
+      var arrayOfHi = ["Hi there!", "Hey there", "Well, story lad", "What's up" ]
+      chatReply.innerHTML = arrayOfHi[Math.floor(Math.random() * (2 - 0 + 1)) + 0]
     } else if (lowerInput.includes("how are you?") || lowerInput.includes("how are you") || lowerInput.includes("how's things?")) {
-      chatReply.innerHTML = "I'm feeling good today and you?"
+      var arrayOfHay = ["I'm feeling good today and you?", "I'm doing fine. How are you?", "All good here, you?", "I'm great today! How are you?"]
+      chatReply.innerHTML = arrayOfHay[Math.floor(Math.random() * (2 - 0 + 1)) + 0];
     } else if ( lowerInput.includes("weather") ) {
       getWeather().then((weatherData) => {
         console.log(weatherData)
