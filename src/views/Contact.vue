@@ -44,18 +44,18 @@
                     <section class="factfile-right">University College Cork</section>
                     <section class="factfile-left">Degree:</section>
                     <section class="factfile-right">Bachelors Computer Science</section>
-                    <section class="factfile-left">Degree Result:</section>
+                    <section class="factfile-left">Result:</section>
                     <section class="factfile-right">2:1 (68%)</section>
-                    <section class="factfile-left">Graduation Year:</section>
+                    <section class="factfile-left">Grad Year:</section>
                     <section class="factfile-right">2023</section>
                     <section class="factfile-left" id="blank">BLANK</section>
                     <section id="blank">BLANK</section>
 
                     <section class="factfile-left">Primary language:</section>
                     <section class="factfile-right">Python</section>
-                    <section class="factfile-left">Secondary language:</section>
+                    <section class="factfile-left">Secondary:</section>
                     <section class="factfile-right">JavaScript</section>
-                    <section class="factfile-left">Third language:</section>
+                    <section class="factfile-left">Third:</section>
                     <section class="factfile-right">Java</section>
                     <section class="factfile-left">Web Frameworks:</section>
                     <section class="factfile-right">Vue &#38 React (JS) | Flask (Python)</section>
@@ -89,13 +89,14 @@
     .logos-display {
         display: grid;
         grid-template-columns: auto auto auto;
-        column-gap: 15%;
+        column-gap: 12%;
     }
 
     .logos-outer {
-        width: 80%;
+        width: 100%;
         display: flex;
         justify-content: center;
+        
     }
 
     .hidden-colour-icon {
@@ -168,16 +169,52 @@
         .logos-outer {
             width: 90%;
         }
+
+        .about-me-outer { 
+            margin-top: 6%;
+            width: 90%;
+        }
+
     }
 
     @media screen and (max-width: 450px) { 
         .contact-container {
             padding-top: 14%;   
+            padding-left: 0%;;
+            padding-right: 0%;
         }
  
         .logos-display {
             grid-template-rows: 33% 33% 33%;
             row-gap: 4%;
+        }
+
+        .about-me-outer {
+            padding: 0%;
+            width: 100%;;
+            border-left: none;
+            border-right: none;
+            margin-bottom: 6%;;
+        }
+
+        .about-me {
+            padding: 0%;
+            width: 100%;
+            font-size: .8em;;
+        }
+
+        .about-me-factfile {
+            display: grid;
+            grid-template-rows: auto auto;
+            grid-template-columns: 20% 80%;;
+        }
+
+        .factfile-left {
+            text-align:left;
+        }
+
+        .factfile-right {
+            padding-left: 15%;
         }
     }
 </style>

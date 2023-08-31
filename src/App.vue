@@ -189,6 +189,8 @@ input:focus {
 
 <script>
   import {getWeather} from './fetchWeather'; 
+  import { getDate } from "./getDate";
+import { getUserCoordinates } from "./getUserCoordinates";
 
  function displayInput() {
     var inputDisplay = document.getElementById("chatbot-input");
@@ -229,13 +231,20 @@ input:focus {
     } else if (lowerInput.includes("how are you?") || lowerInput.includes("how are you") || lowerInput.includes("how's things?")) {
       var arrayOfHay = ["I'm feeling good today and you?", "I'm doing fine. How are you?", "All good here, you?", "I'm great today! How are you?"]
       chatReply.innerHTML = arrayOfHay[Math.floor(Math.random() * (2 - 0 + 1)) + 0];
-    } else if ( lowerInput.includes("weather") ) {
+    } else if ( lowerInput.includes("/weather") ) {
       getWeather().then((weatherData) => {
         console.log(weatherData)
         var daily = weatherData.daily
         chatReply.innerHTML = "<span style='display:flex; justify-content:center;'>Today's weather: </span>"
         chatReply.innerHTML += "Temperature Range: <b>" + daily.temperature_2m_min[0] + "&deg;C" + " - " + daily.temperature_2m_max[0] + "&deg;C </b><br>"
         chatReply.innerHTML += "Rain: <b>" + daily.precipitation_sum[0] + "mm</b>"
+      })
+    } else if (lowerInput.includes("/date")) {
+      chatReply.innerHTML = getDate()
+    } else if (lowerInput.includes("/coordinates")) {
+      getUserCoordinates().then((coords) => {
+        console.log("coords-->", coords)
+        chatReply.innerHTML = "Latitude: " + coords.lat + "<br>Longitude: " + coords.lng
       })
     }
     else {

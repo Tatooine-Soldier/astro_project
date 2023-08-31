@@ -24,7 +24,7 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
                                 <div class="home-divs"><router-link to="/iss-tracker">ISS Tracker</router-link></div>
                                 <div class="home-divs"><router-link to="/weather">Weather Forecast</router-link></div>
                                 <div class="home-divs"><router-link to="/charts">Celestial Charts</router-link></div>
-                                <div class="home-divs" @click="displayNewsLetter()">Signup to newsletter</div>
+                                <div class="home-divs" @click="displayNewsLetter()">Newsletter</div>
                             </section>
                         </section>
                         <!-- <section class="home-divs-container">
@@ -190,7 +190,7 @@ p {
     }
 
     .home-divs {
-        padding: 20%;
+        padding: 24%;
     }
 
     .home-divs-container {
