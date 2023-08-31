@@ -46,7 +46,7 @@
                     <section class="factfile-right">Bachelors Computer Science</section>
                     <section class="factfile-left">Result:</section>
                     <section class="factfile-right">2:1 (68%)</section>
-                    <section class="factfile-left">Grad Year:</section>
+                    <section class="factfile-left">Graduation:</section>
                     <section class="factfile-right">2023</section>
                     <section class="factfile-left" id="blank">BLANK</section>
                     <section id="blank">BLANK</section>
@@ -57,7 +57,7 @@
                     <section class="factfile-right">JavaScript</section>
                     <section class="factfile-left">Third:</section>
                     <section class="factfile-right">Java</section>
-                    <section class="factfile-left">Web Frameworks:</section>
+                    <section class="factfile-left">Frameworks:</section>
                     <section class="factfile-right">Vue &#38 React (JS) | Flask (Python)</section>
                     <section class="factfile-left">Database Experience:</section>
                     <section class="factfile-right">MongoDB &#38 SQL</section>
@@ -195,6 +195,7 @@
             border-left: none;
             border-right: none;
             margin-bottom: 6%;;
+            border-radius: 0px;;
         }
 
         .about-me {
