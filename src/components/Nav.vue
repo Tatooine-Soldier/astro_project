@@ -134,7 +134,7 @@
     }
 
     .nav-img img {
-        margin-top: 7%;;
+        margin-top: 4%;;
     }
   }
 
@@ -148,7 +148,8 @@
     }
 
     .nav-img {
-        padding-top: 25%;;
+        padding-top: 6%;;
+        padding-bottom: 3%;
     }
   }
 

@@ -21,7 +21,7 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
                                 </section>
                             </section>
                             <section class="under-who-we-are">
-                                <div class="home-divs"><router-link to="/iss-tracker">ISS Tracker</router-link></div>
+                                <div class="home-divs" id="iss-tracker-div"><router-link to="/iss-tracker">ISS Tracker</router-link></div>
                                 <div class="home-divs"><router-link to="/weather">Weather Forecast</router-link></div>
                                 <div class="home-divs"><router-link to="/charts">Celestial Charts</router-link></div>
                                 <div class="home-divs" @click="displayNewsLetter()">Newsletter</div>
@@ -76,11 +76,20 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
     background-color: rgba(21, 21, 21, 0.65)
 }
 
+.home-divs:first-of-type:hover {
+    background-color: rgba(21, 21, 21, 0.65)
+}
+
 .home-divs:hover {
     background-color: rgba(21, 21, 21, 0.75);
     cursor: pointer;
-    
 }
+
+#iss-tracker-div:hover {
+    background-color: rgba(21, 21, 21, 0.75);
+    cursor: pointer;
+}
+
 
 .home-divs a {
     color: white;

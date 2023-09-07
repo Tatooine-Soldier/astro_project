@@ -83,6 +83,8 @@ body {
 
 #chatbot-icon:hover {
   cursor: pointer;
+  padding: 7px;;
+  border-radius: 24px;
 }
 
 #chatbot-x:hover {
