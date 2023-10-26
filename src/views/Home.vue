@@ -7,7 +7,7 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
             <section>
                 <section class="home-inner">
                     <div id="home-title">
-                        <h2><b>COSMIC IRELAND</b></h2>
+                        <h2><b class="custom-font">COSMIC IRELAND</b></h2>
                         <p><i id="home-quote">"The only true wisdom is in knowing you know nothing"<br>~ Socrates</i></p>
                         <section class="who-we-are">
                             <section class="home-divs">
@@ -134,7 +134,9 @@ import NewsletterSignup from '../components/NewsletterSignup.vue';
     
 }
 
-
+.custom-font {
+    font-family: 'Raleway', sans-serif;
+}
 
 
 #home-quote {

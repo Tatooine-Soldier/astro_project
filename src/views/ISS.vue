@@ -32,6 +32,9 @@
                     </div>
                 </section>
             </section>
+            <section>
+                
+            </section>
 
             <div id="map-refresh-div" >Refresh Map</div>
         </section>
